@@ -1,0 +1,28 @@
+.shifting_table_wrapper {
+  padding: 20px 10px;
+  margin: 20px 0;
+  h3 {
+    text-align: left;
+  }
+}
+.shifting_table {
+  border: 1px solid #a9a9a9;
+  border-bottom-width: 0px;
+  background: $default-bg;
+  .shifting_table_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-bottom: 1px solid #a9a9a9;
+    padding: 5px 10px;
+    .pd_unit {
+      flex-basis: 70%;
+      text-align: left;
+    }
+    .pd_pricing {
+      flex: 1;
+      text-align: right;
+    }
+  }
+}

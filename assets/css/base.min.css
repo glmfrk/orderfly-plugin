@@ -1,0 +1,60 @@
+/*
+* basic tryprography css start here
+*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-default: #58595e;
+  --color-white: #ffffff;
+  --font-body: "Plus Jakarta Sans";
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: var(--color-default);
+  background-color: var(--color-white);
+  word-wrap: break-word;
+  letter-spacing: -0.2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-default);
+}
+
+article,
+figure,
+blockquote,
+aside {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+* basic tryprography css end here
+*/

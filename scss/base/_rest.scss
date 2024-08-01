@@ -1,0 +1,53 @@
+/*
+* basic tryprography css start here
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  position: relative;
+  font-family: $font-body;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 28px;
+  color: $clrPrimary;
+  background-color: $default-bg;
+  word-wrap: break-word;
+  letter-spacing: -0.2px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-body;
+  font-weight: 700;
+  line-height: 1.5;
+  color: $clrPrimary;
+}
+article,
+figure,
+blockquote,
+aside {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: relative;
+}
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*
+* basic tryprography css end here
+*/

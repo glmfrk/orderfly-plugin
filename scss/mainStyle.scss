@@ -1,0 +1,33 @@
+// Partial files
+@import "base/variables";
+@import "base/rest";
+@import "base/utilities";
+
+@import "components/header";
+@import "components/button";
+@import "components/cupon";
+@import "components/order";
+@import "components/product-table";
+@import "components/shifting";
+@import "components/deliveryForm";
+
+// all pages
+@import "pages/homePage.scss";
+/*
+* main style start
+*/
+.order__box {
+  width: 100%;
+  background: $chart-bg;
+  border-radius: 10px;
+  padding: 30px 10px;
+  margin: 50px auto;
+  margin-bottom: 0px;
+  position: relative;
+  .logo {
+    display: inline-block;
+    max-width: 145px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,19 @@
+.order_note_box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  margin-bottom: 80px;
+}
+.order_note_box label {
+  font-size: 22px;
+  font-weight: 600;
+}
+.order_note_box input[type=text] {
+  border: 1px solid #d1d1dc;
+  background: #fff;
+  padding: 9px 15px;
+  border-radius: 5px;
+  flex-basis: 75%;
+  margin-left: auto;
+}

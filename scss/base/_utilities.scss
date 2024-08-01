@@ -1,0 +1,70 @@
+input,
+button,
+span {
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+}
+
+// ============================
+// Input Apperance Start
+// ============================
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield !important;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 2px;
+  -webkit-filter: invert(1);
+  filter: invert(1);
+}
+
+// ============================
+// Input Apperance End
+// ============================
+
+input[type="submit"] {
+  padding: 10px 30px;
+  font-size: 20px;
+  line-height: 1.5;
+  font-weight: 600;
+  min-width: 200px;
+  background: #f89503;
+  color: #fff;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    background: #ec2029;
+    color: #fbfbfb;
+  }
+}
+
+input[type="checkbox"] {
+  position: relative;
+  border: 5px solid #c36265;
+  border-radius: 50px;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  margin: 0 0.4em 0 0;
+  outline: 0;
+  padding: 0 !important;
+  vertical-align: text-top;
+  height: 16px;
+  width: 16px;
+  -webkit-appearance: none;
+  opacity: 0.5;
+}
+
+input[type="checkbox"]:checked {
+  opacity: 1;
+}

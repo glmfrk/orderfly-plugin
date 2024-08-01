@@ -1,0 +1,67 @@
+// Update Table Styles
+.product__table {
+  padding: 20px 10px;
+  margin: 20px 0;
+  .product__table_row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 5px 0px;
+    margin: 10px 0px;
+    .item_left {
+      flex: 1;
+    }
+    .item_right {
+      flex-basis: 45%;
+      gap: 7%;
+      .close_icon {
+        background: transparent;
+        margin-left: auto;
+        font-size: 24px;
+        color: #8f8f8f;
+      }
+    }
+  }
+}
+
+.single_item {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  .product_demo {
+    width: 24px;
+    width: 32px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .item_left {
+    display: flex;
+    align-items: center;
+  }
+  span {
+    font-weight: 600;
+  }
+}
+.pd_pricing {
+  flex: 1;
+  text-align: left;
+  padding: 0px 10px;
+  font-weight: 600;
+}
+.quantity {
+  width: 120px;
+  display: flex;
+  align-items: center;
+  input[type="button"] {
+    flex-basis: 30px;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+  }
+  input[type="number"] {
+    width: 60px;
+    display: inline-block;
+    text-align: center;
+  }
+}

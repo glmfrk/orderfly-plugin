@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Order Page </title>
+
+    <!-- fontawsome cdn link  -->
+    <link rel="stylesheet" href="./Product Order Page_files/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- css files  -->
+    <link rel="stylesheet" href="./Product Order Page_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./Product Order Page_files/mainStyle.min.css">
+</head>
+<body>
+    <main id="content__wrapper">
+        <section class="order__page_sec">
+            <div class="container text-center">
+              <div class="row">
+                <div class="col-7 mx-auto">
+                  <div class="order__box">
+                    <a href="http://127.0.0.1:5500/index.html#" class="logo">
+                        <img src="./Product Order Page_files/pran.png" alt="pran.png">
+                    </a>
+                    <h2 class="heading">আপনার অর্ডারকৃত পণ্য নির্ধারণ করুন </h2>
+                    <div class="product__table">
+                      <div class="product__table_row" data-id="table_row_01">
+                        <div class="single_item item_left">
+                          <figure class="product_demo">
+                            <img src="./Product Order Page_files/pran-potata.png" alt="pran-potata.png">
+                          </figure>
+
+                          <div class="pd_unit">
+                            <input type="checkbox" id="pd_item_01" name="pd_item_01">
+                            <label for="pd_item_01"> প্রাণ পোঁটাটা <strong>(  ১০০গ্রাম )</strong> </label>
+                          </div>
+                        </div>
+                        <div class="single_item item_right">
+                          <div class="pd_pricing">
+                            Tk <span>45.00</span>
+                          </div>
+
+                          <div class="quantity">
+                            <input type="button" value="-" class="minus">
+                            <input type="number" value="0" min="0" class="input-box">
+                            <input type="button" value="+" class="plus">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__table_row" data-id="table_row_02">
+                        <div class="single_item item_left">
+                          <figure class="product_demo">
+                            <img src="./Product Order Page_files/pran-mango-juice-can.png" alt="pran-mango-juice-can-250-ml.png">
+                          </figure>
+
+                          <div class="pd_unit">
+                            <input type="checkbox" id="pd_item_02" name="pd_item_02">
+                            <label for="pd_item_02"> প্রাণ ম্যাংগো জুস ক্যান <strong>(২৫০ মিলি)</strong> </label>
+                          </div>
+                        </div>
+                        <div class="single_item item_right">
+                          <div class="pd_pricing">
+                            Tk <span>40.00</span>
+                          </div>
+
+                          <div class="quantity">
+                            <input type="button" value="-" class="minus">
+                            <input type="number" value="0" min="0" class="input-box">
+                            <input type="button" value="+" class="plus">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__table_row" data-id="table_row_03">
+                        <div class="single_item item_left">
+                          <figure class="product_demo">
+                            <img src="./Product Order Page_files/pran_drink_water.png" alt="pran_drink_water.png">
+                          </figure>
+
+                          <div class="pd_unit">
+                            <input type="checkbox" id="pd_item_03" name="pd_item_03">
+                            <label for="pd_item_03"> প্রান ড্রিংক ওটার <strong>(২৫০ মিলি)</strong> </label>
+                          </div>
+                        </div>
+                        <div class="single_item item_right">
+                          <div class="pd_pricing">
+                            Tk <span>20.00</span>
+                          </div>
+
+                          <div class="quantity">
+                            <input type="button" value="-" class="minus">
+                            <input type="number" value="0" min="0" class="input-box">
+                            <input type="button" value="+" class="plus">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="product__table_row" data-id="table_row_04">
+                        <div class="single_item item_left">
+                          <figure class="product_demo">
+                            <img src="./Product Order Page_files/potato_crackers.png" alt="potato_crackers.png">
+                          </figure>
+
+                          <div class="pd_unit">
+                            <input type="checkbox" id="pd_item_04" name="pd_item_04">
+                            <label for="pd_item_04">প্রাণ পটেটো ক্র্যাকার <strong>(১৫গ্রাম)</strong> </label>
+                          </div>
+                        </div>
+                        <div class="single_item item_right">
+                          <div class="pd_pricing">
+                            Tk <span>10.00</span>
+                          </div>
+
+                          <div class="quantity">
+                            <input type="button" value="-" class="minus">
+                            <input type="number" value="0" min="0" class="input-box">
+                            <input type="button" value="+" class="plus">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="shifting_table_wrapper">
+                      <h3 class="heading_h3 text-left"> শিপিং মেথড </h3>
+                      <div class="shifting_table">
+                        <div class="shifting_table_row" data-id="shifting_row_01">
+                          <div class="pd_unit">
+                            <input type="radio" id="radio_item_01" name="shiftingCost">
+                            <label for="radio_item_01"> ঢাকা সিটির ভিতরে </label>
+                          </div>
+
+                          <strong>
+                            Tk <span class="shiftingCost">70.00</span>
+                          </strong>
+                        </div>
+                        <div class="shifting_table_row" data-id="shifting_row_02">
+                          <div class="pd_unit">
+                            <input type="radio" id="radio_item_02" name="shiftingCost">
+                            <label for="radio_item_02"> চট্টগ্রাম সিটির ভিতরে </label>
+                          </div>
+
+                          <strong>
+                            Tk <span class="shiftingCost">70.00</span>
+                          </strong>
+                        </div>
+                        <div class="shifting_table_row" data-id="shifting_row_03">
+                          <div class="pd_unit">
+                            <input type="radio" id="radio_item_03" name="shiftingCost">
+                            <label for="radio_item_03"> ঢাকা ও চট্টগ্রাম সিটির বাহিরে </label>
+                          </div>
+
+                          <strong>
+                            Tk <span class="shiftingCost">130.00</span>
+                          </strong>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="product_price_details">
+                      <div class="pd_grandTotal_price">
+                        <p>সাব টোটাল <strong class="net_price">Tk <span>0</span></strong></p>
+                        <p>ডেলিভারি চার্জ <strong>Tk <span class="delivery_charge">0</span></strong></p>
+                        <p>সর্বমোট<strong class="total_price">Tk <span>0</span></strong></p>
+                      </div>
+                      <div class="order_note_box">
+                        <label for="orderNote">
+                          Order note
+                        </label>
+                        <input type="text" name="orderNote" placeholder="Order note">
+                      </div>
+                    </div>
+
+                    <div class="delivary_order_form">
+                      <h2>ক্যাশ অন ডেলিভারিতে <br> অর্ডার করতে আপনার তথ্য দিন </h2>
+                      <form action="http://127.0.0.1:5500/data/data.json" method="post" class="userInfoForm">
+                        <div class="index_box">
+                          <label for="fullName">আপনার নাম  <span>*</span></label>
+                          <div class="input_item">
+                            <span><i class="fa-solid fa-user"></i></span>
+                            <input type="text" name="userName" id="userName" placeholder="API Solutions">
+                           </div>
+                        </div>
+
+                        <div class="index_box">
+                          <label for="poneNumber">আপনার নাম্বার <span>*</span></label>
+                         <div class="input_item">
+                          <span><i class="fa-solid fa-phone"></i></span>
+                          <input type="number" name="userPhone" id="userPhone" placeholder="02-55035911">
+                         </div>
+                        </div>
+
+                        <div class="index_box">
+                          <label for="address">এড্রেস <span>*</span> </label>
+                          <div class="input_item">
+                            <span><i class="fa-solid fa-location-dot"></i></span>
+                            <input type="text" name="userAddress" id="userAddress" placeholder="Block B, House -4 Road 23/A, Dhaka 1213">
+                           </div>
+                        </div>
+                        <input type="submit" value="আপনার অর্ডার কনফার্ম করতে ক্লিক করুন" class="btn submit_btn">
+                        <p class="mgs_info">উপরের বাটনে ক্লিক করলে আপনার অর্ডারটি সাথে সাথে কনফার্ম হয়ে যাবে !
+
+                        </p>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- js files  -->
+     <script src="./Product Order Page_files/leatest.js.download"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+</body></html>

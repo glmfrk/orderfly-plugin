@@ -1,0 +1,434 @@
+// const initialObj = {
+//   items: [],
+//   shippingInfo: {},
+//   shippingCharge: 0,
+//   subTotal: 0,
+//   grandTotal: 0,
+//   orderNote: "",
+// };
+
+// const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+// const radioBoxes = document.querySelectorAll('input[type="radio"]');
+// const inputBoxes = document.querySelectorAll(".input-box");
+// const minusButtons = document.querySelectorAll(".minus");
+// const plusButtons = document.querySelectorAll(".plus");
+// const orderNote = document.querySelector('input[name="orderNote"]');
+
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Handle input changes (number type) and update initialObj
+//   const handleInputChange = function (item) {
+//     item.addEventListener("keyup", function (event) {
+//       // Find the relevant row and elements
+//       const itemRow = this.closest(".product__table_row");
+//       const itemId = itemRow.getAttribute("data-id");
+//       const checkbox = itemRow.querySelector('input[type="checkbox"]');
+
+//       // relevant row and elements price and quantity
+//       let price = itemRow.querySelector(".pd_pricing span");
+//       price = parseInt(price.textContent);
+//       const quantity = parseInt(event.target.value);
+
+//       // Create itemData object
+//       const itemData = {
+//         id: itemId, // Assuming you have a data-id attribute
+//         categoryId: "", // Fill in the actual category ID
+//         inventoryId: "", // Fill in the actual inventory ID
+//         quantity: quantity,
+//         price: price,
+//         title: "itemName", // Fill in the actual title
+//         image: "itemImage", // Fill in the actual image URL
+//       };
+
+//       // Update checkbox and initialObj
+//       checkbox.checked = true;
+//       if (!isNaN(quantity)) {
+//         initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//         initialObj.items.push(itemData);
+//         // initialObj.subTotal = initialObj.items.reduce(
+//         //   (total, currentItem) =>
+//         //     total + currentItem.price * currentItem.quantity,
+//         //   0
+//         // );
+//         updateTotals();
+//       } else if (event.target.value === "") {
+//         checkbox.checked = false;
+//         initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//       }
+
+//       console.log(initialObj);
+//     });
+//   };
+
+//   // Handle checkbox changes (checkbox type) and update initialObj
+//   const handleCheckboxChange = function (item) {
+//     item.addEventListener("change", function (event) {
+//       // Find the relevant row and elements
+//       const itemRow = this.closest(".product__table_row");
+//       const itemId = itemRow.getAttribute("data-id");
+
+//       // relevant row and elements price and quantity
+//       let price = itemRow.querySelector(".pd_pricing span");
+//       price = parseInt(price.textContent);
+//       let quantityInput = itemRow.querySelector('input[type="number"]');
+//       let quantity = parseInt(quantityInput.value);
+
+//       // Create itemData object
+//       const itemData = {
+//         id: itemId, // Assuming you have a data-id attribute
+//         title: "itemName", // Fill in the actual title
+//         image: "itemImage", // Fill in the actual image URL
+//         quantity: quantity,
+//         price: price,
+//       };
+
+//       if (event.target.checked) {
+//         // Ensure quantity is not NaN or less than 1
+//         if (isNaN(quantity) || quantity < 1) {
+//           quantity = 1;
+//         }
+//         itemData.quantity = quantity;
+//         quantityInput.value = quantity;
+//         initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//         initialObj.items.push(itemData);
+//       } else {
+//         initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//         quantityInput.value = 0; // Optionally reset the quantity input
+//       }
+
+//       // initialObj.subTotal = initialObj.items.reduce(
+//       //   (total, currentItem) =>
+//       //     total + currentItem.price * currentItem.quantity,
+//       //   0
+//       // );
+
+//       updateTotals();
+//       console.log(initialObj);
+//     });
+//   };
+
+//   // Handle decrement button click and update initialObj
+//   const handleDecrementButton = function (item) {
+//     item.addEventListener("click", function (event) {
+//       // Find the relevant row and elements
+//       const itemRow = this.closest(".product__table_row");
+//       const itemId = itemRow.getAttribute("data-id");
+//       const checkbox = itemRow.querySelector('input[type="checkbox"]');
+
+//       // Relevant item price and quantity
+//       let price = itemRow.querySelector(".pd_pricing span");
+//       price = parseInt(price.textContent);
+//       const quantityInput = itemRow.querySelector('input[type="number"]');
+//       let quantity = parseInt(quantityInput.value);
+
+//       // Ensure quantity is not NaN or less than 1
+//       if (isNaN(quantity) || quantity <= 1) {
+//         quantity = 0;
+//         checkbox.checked = false;
+//       } else {
+//         quantity -= 1;
+//       }
+
+//       quantityInput.value = quantity;
+
+//       // Create itemData object
+//       const itemData = {
+//         id: itemId, // Assuming you have a data-id attribute
+//         title: "itemName", // Fill in the actual title
+//         image: "itemImage", // Fill in the actual image URL
+//         quantity: quantity,
+//         price: price,
+//       };
+
+//       if (checkbox.checked) {
+//         initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//         if (quantity > 0) initialObj.items.push(itemData);
+//       } else {
+//         initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//         quantityInput.value = 0; // Optionally reset the quantity input
+//       }
+
+//       // initialObj.subTotal = initialObj.items.reduce(
+//       //   (total, currentItem) =>
+//       //     total + currentItem.price * currentItem.quantity,
+//       //   0
+//       // );
+//       updateTotals();
+//       console.log(initialObj);
+//     });
+//   };
+
+//   // Handle increment button click and update initialObj
+//   const handleIncrementButton = function (item) {
+//     item.addEventListener("click", function (event) {
+//       // Find the relevant row and elements
+//       const itemRow = this.closest(".product__table_row");
+//       const itemId = itemRow.getAttribute("data-id");
+//       const checkbox = itemRow.querySelector('input[type="checkbox"]');
+
+//       // Relevant item price and quantity
+//       let price = itemRow.querySelector(".pd_pricing span");
+//       price = parseInt(price.textContent);
+//       const quantityInput = itemRow.querySelector('input[type="number"]');
+//       let quantity = parseInt(quantityInput.value);
+
+//       // Increment quantity
+//       quantity = isNaN(quantity) ? 1 : quantity + 1;
+
+//       quantityInput.value = quantity;
+
+//       // Create itemData object
+//       const itemData = {
+//         id: itemId, // Assuming you have a data-id attribute
+//         title: "itemName", // Fill in the actual title
+//         image: "itemImage", // Fill in the actual image URL
+//         quantity: quantity,
+//         price: price,
+//       };
+
+//       checkbox.checked = true;
+
+//       initialObj.items = initialObj.items.filter((i) => i.id !== itemData.id);
+//       initialObj.items.push(itemData);
+
+//       // initialObj.subTotal = initialObj.items.reduce(
+//       //   (total, currentItem) =>
+//       //     total + currentItem.price * currentItem.quantity,
+//       //   0
+//       // );
+//       updateTotals();
+//       console.log(initialObj);
+//     });
+//   };
+
+//   // Handle shipping method and update initialObj
+
+//   const handleShippingMethod = function (item) {
+//     item.addEventListener("change", function (event) {
+//       const itemRow = this.closest(".shifting_table_row");
+//       const shippingCost = parseInt(
+//         itemRow.querySelector(".shiftingCost").textContent
+//       );
+//       initialObj.shippingCharge = shippingCost;
+//       updateTotals();
+//     });
+//   };
+
+//   // all update price and quantity calculate
+//   const updateTotals = () => {
+//     initialObj.subTotal = initialObj.items.reduce(
+//       (total, item) => total + item.price * item.quantity,
+//       0
+//     );
+//     const grandTotal = initialObj.subTotal + initialObj.shippingCharge;
+//     initialObj.grandTotal = grandTotal;
+//     updateViewData(initialObj);
+//     console.log(initialObj);
+//   };
+
+//   // All view data update
+//   const updateViewData = (udateState) => {
+//     const totalPrice = document.querySelector(".net_price span");
+//     const deliveryCost = document.querySelector(".delivery_charge");
+//     const grandTotal = document.querySelector(".total_price span");
+//     const orderNote = document.querySelector('input[name="orderNote"]');
+
+//     totalPrice.textContent = udateState.subTotal;
+//     deliveryCost.textContent = udateState.shippingCharge;
+//     grandTotal.textContent = udateState.grandTotal;
+
+//     udateState.orderNote = orderNote.value;
+//   };
+//   // Attach event handlers to inputs
+//   const attachEventHandlers = function (inputsArray) {
+//     inputsArray.forEach((elements) => {
+//       elements.forEach((element) => {
+//         if (element.type === "number") {
+//           handleInputChange(element);
+//         }
+//         if (element.type === "checkbox") {
+//           handleCheckboxChange(element);
+//         }
+//         if (element.type === "radio") {
+//           handleShippingMethod(element);
+//         }
+//         if (element.classList.contains("minus")) {
+//           handleDecrementButton(element);
+//         }
+//         if (element.classList.contains("plus")) {
+//           handleIncrementButton(element);
+//         }
+//       });
+//     });
+//   };
+
+//   // Call the event handler function with the input arrays
+//   attachEventHandlers([
+//     checkBoxes,
+//     inputBoxes,
+//     minusButtons,
+//     plusButtons,
+//     radioBoxes,
+//   ]);
+// });
+
+const initialObj = {
+  items: [],
+  shippingInfo: {},
+  shippingCharge: 0,
+  subTotal: 0,
+  grandTotal: 0,
+  orderNote: "",
+};
+
+const checkBoxes = document.querySelectorAll('input[type="checkbox"]');
+const radioBoxes = document.querySelectorAll('input[type="radio"]');
+const inputBoxes = document.querySelectorAll(".input-box");
+const minusButtons = document.querySelectorAll(".minus");
+const plusButtons = document.querySelectorAll(".plus");
+const orderNote = document.querySelector('input[name="orderNote"]');
+
+document.addEventListener("DOMContentLoaded", function () {
+  const handleInputChange = (item) => {
+    item.addEventListener("keyup", function () {
+      const itemRow = this.closest(".product__table_row");
+      const quantity = parseInt(this.value);
+      const checkbox = itemRow.querySelector('input[type="checkbox"]');
+
+      if (!isNaN(quantity)) {
+        checkbox.checked = true;
+        initialObj.items = initialObj.items.filter(
+          (i) => i.id !== itemRow.getAttribute("data-id")
+        );
+        initialObj.items.push(updateItemData(itemRow, quantity));
+      } else {
+        checkbox.checked = false;
+        initialObj.items = initialObj.items.filter(
+          (i) => i.id !== itemRow.getAttribute("data-id")
+        );
+      }
+
+      updateTotals();
+    });
+  };
+
+  const handleCheckboxChange = (item) => {
+    item.addEventListener("change", function () {
+      const itemRow = this.closest(".product__table_row");
+      const quantityInput = itemRow.querySelector('input[type="number"]');
+      let quantity = parseInt(quantityInput.value);
+
+      if (this.checked) {
+        quantity = isNaN(quantity) || quantity < 1 ? 1 : quantity;
+        quantityInput.value = quantity;
+        initialObj.items = initialObj.items.filter(
+          (i) => i.id !== itemRow.getAttribute("data-id")
+        );
+        initialObj.items.push(updateItemData(itemRow, quantity));
+      } else {
+        initialObj.items = initialObj.items.filter(
+          (i) => i.id !== itemRow.getAttribute("data-id")
+        );
+        quantityInput.value = 0;
+      }
+
+      updateTotals();
+    });
+  };
+
+  const handleDecrementButton = (item) => {
+    item.addEventListener("click", function () {
+      const itemRow = this.closest(".product__table_row");
+      const quantityInput = itemRow.querySelector('input[type="number"]');
+      let quantity = parseInt(quantityInput.value);
+
+      quantity = isNaN(quantity) || quantity <= 1 ? 0 : quantity - 1;
+      quantityInput.value = quantity;
+      itemRow.querySelector('input[type="checkbox"]').checked = quantity > 0;
+
+      initialObj.items = initialObj.items.filter(
+        (i) => i.id !== itemRow.getAttribute("data-id")
+      );
+      if (quantity > 0)
+        initialObj.items.push(updateItemData(itemRow, quantity));
+
+      updateTotals();
+    });
+  };
+
+  const handleIncrementButton = (item) => {
+    item.addEventListener("click", function () {
+      const itemRow = this.closest(".product__table_row");
+      const quantityInput = itemRow.querySelector('input[type="number"]');
+      let quantity = parseInt(quantityInput.value);
+
+      quantity = isNaN(quantity) ? 1 : quantity + 1;
+      quantityInput.value = quantity;
+      itemRow.querySelector('input[type="checkbox"]').checked = true;
+
+      initialObj.items = initialObj.items.filter(
+        (i) => i.id !== itemRow.getAttribute("data-id")
+      );
+      initialObj.items.push(updateItemData(itemRow, quantity));
+
+      updateTotals();
+    });
+  };
+
+  const handleShippingMethod = (item) => {
+    item.addEventListener("change", function () {
+      const itemRow = this.closest(".shifting_table_row");
+      const shippingCost = parseInt(
+        itemRow.querySelector(".shiftingCost").textContent
+      );
+      initialObj.shippingCharge = shippingCost;
+      updateTotals();
+    });
+  };
+
+  const attachEventHandlers = (inputsArray) => {
+    inputsArray.forEach((elements) => {
+      elements.forEach((element) => {
+        if (element.type === "number") handleInputChange(element);
+        if (element.type === "checkbox") handleCheckboxChange(element);
+        if (element.type === "radio") handleShippingMethod(element);
+        if (element.classList.contains("minus")) handleDecrementButton(element);
+        if (element.classList.contains("plus")) handleIncrementButton(element);
+      });
+    });
+  };
+
+  attachEventHandlers([
+    checkBoxes,
+    inputBoxes,
+    minusButtons,
+    plusButtons,
+    radioBoxes,
+  ]);
+});
+
+// Relevent all callback functions define here
+const updateItemData = (itemRow, quantity) => {
+  const itemId = itemRow.getAttribute("data-id");
+  const price = parseInt(itemRow.querySelector(".pd_pricing span").textContent);
+  const title = itemRow.querySelector("label").textContent; // Replace with actual title
+  const image = itemRow.querySelector("img").src; // Replace with actual image URL
+  return { id: itemId, title, image, quantity, price };
+};
+
+const updateTotals = () => {
+  initialObj.subTotal = initialObj.items.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  initialObj.grandTotal = initialObj.subTotal + initialObj.shippingCharge;
+  updateViewData();
+};
+
+const updateViewData = () => {
+  document.querySelector(".net_price span").textContent = initialObj.subTotal;
+  document.querySelector(".delivery_charge").textContent =
+    initialObj.shippingCharge;
+  document.querySelector(".total_price span").textContent =
+    initialObj.grandTotal;
+  initialObj.orderNote = orderNote.value;
+};

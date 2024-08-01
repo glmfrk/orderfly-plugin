@@ -1,0 +1,19 @@
+.shipping__wrapper {
+  margin-bottom: 50px;
+}
+.shipping__wrapper h3 {
+  text-align: left;
+}
+.shipping__wrapper .shipping__table {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: 1px solid #a9a9a9;
+}
+.shipping__wrapper .shipping__table .pd_unit {
+  flex-basis: 70%;
+}
+.shipping__wrapper .shipping__table .pd_pricing {
+  flex: 1;
+}

@@ -1,0 +1,58 @@
+.delivary_order_form {
+  form {
+    background: transparent;
+    padding: 30px 15px;
+    padding-bottom: 0;
+    border-radius: 10px;
+    .index_box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      label {
+        font-style: 32px;
+        font-weight: 700;
+        text-align: left;
+        flex: 1;
+        span {
+          color: red;
+          font-size: 16px;
+        }
+      }
+      .input_item {
+        position: relative;
+        margin-left: auto;
+        flex-basis: 78%;
+
+        span {
+          width: 48px;
+          height: 48px;
+          background: #ddd;
+          border-left: 1px solid #d1d1dc;
+          border-radius: 5px;
+          position: absolute;
+          z-index: 1;
+          top: 0;
+          left: 0;
+          font-size: 18px;
+          line-height: 2.8;
+        }
+        input {
+          width: 100%;
+          padding: 10px;
+          border-radius: 5px;
+          padding-left: 60px;
+        }
+      }
+    }
+
+    p.mgs_info {
+      color: green;
+      font-size: 28px;
+      line-height: 1.5;
+      padding: 10px;
+      margin-top: 10px;
+      margin-bottom: 0px;
+    }
+  }
+}

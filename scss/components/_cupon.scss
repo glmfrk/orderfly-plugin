@@ -1,0 +1,14 @@
+form.coupn__form {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+
+  input#coupn_code {
+    flex-basis: 100%;
+    border: 1px solid #d1d1dc;
+    background: #fff;
+    padding: 9px 15px;
+    border-radius: 5px;
+  }
+}
