@@ -22,11 +22,13 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('ORDERFLY_PLUGIN_DIR', plugin_dir_path(__FILE__));
+define('ORDERFLY_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('ORDERFLY_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // Include required files
-include_once ORDERFLY_PLUGIN_DIR . 'includes/orderfly-functions.php';
+foreach (['orderfly-shortcode.php', 'orderfly-posttype.php', 'database-functions.php', 'ajax-handler.php', 'email-functions.php', 'generatefpdf.php'] as $file) {
+  require_once ORDERFLY_PLUGIN_PATH . 'includes/' . $file;
+}
 
 // Activation hook
 register_activation_hook(__FILE__, 'orderfly_activate');
@@ -36,7 +38,7 @@ register_deactivation_hook(__FILE__, 'orderfly_deactivate');
 
 // Plugin activation function
 function orderfly_activate() {
-  orderfly_create_tables();
+  orderfly_create_database_tables();
 
   flush_rewrite_rules();
 }
@@ -70,17 +72,5 @@ function orderfly_enqueue_scripts() {
   ));
 }
 add_action('wp_enqueue_scripts', 'orderfly_enqueue_scripts');
-
-
-
-// generate html file shortcode
-if (file_exists(ORDERFLY_PLUGIN_DIR . '/orderfly-shortcode.php')) {
-  require_once ORDERFLY_PLUGIN_DIR . '/orderfly-shortcode.php';
-}
-
-// generate orderfly post type
-if (file_exists(ORDERFLY_PLUGIN_DIR . '/includes/orderfly-post.php')) {
-  require_once ORDERFLY_PLUGIN_DIR . '/includes/orderfly-post.php';
-}
 
 

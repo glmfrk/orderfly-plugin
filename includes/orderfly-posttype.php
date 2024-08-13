@@ -102,9 +102,9 @@ function orderfly_display_orders() {
 
     if (isset($_GET['view'])) {
         $order_id = intval($_GET['view']);
-        $order_info = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}customer_information WHERE id = %d", $order_id));
-        $order_items = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}customer_orders WHERE order_id = %d", $order_id));
-        $order_confirmation = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}order_confirmation WHERE order_id = %d", $order_id));
+        $order_info = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}customer_info WHERE id = %d", $order_id));
+        $order_items = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}customer_order_info WHERE order_id = %d", $order_id));
+        $customer_confirm_order = $wpdb->get_row($wpdb->prepare("SELECT * FROM {$wpdb->prefix}customer_confirm_order WHERE order_id = %d", $order_id));
 
         ?>
         <div class="wrap">
@@ -138,16 +138,16 @@ function orderfly_display_orders() {
             </table>
             <h2>Order Confirmation</h2>
             <table class="wp-list-table widefat fixed striped">
-                <tr><th>Sub Total</th><td><?php echo esc_html($order_confirmation->subTotal); ?></td></tr>
-                <tr><th>Shipping Charge</th><td><?php echo esc_html($order_confirmation->shippingCharge); ?></td></tr>
-                <tr><th>Grand Total</th><td><?php echo esc_html($order_confirmation->grandTotal); ?></td></tr>
-                <tr><th>Order Note</th><td><?php echo esc_html($order_confirmation->orderNote); ?></td></tr>
+                <tr><th>Sub Total</th><td><?php echo esc_html($customer_confirm_order->subTotal); ?></td></tr>
+                <tr><th>Shipping Charge</th><td><?php echo esc_html($customer_confirm_order->shippingCharge); ?></td></tr>
+                <tr><th>Grand Total</th><td><?php echo esc_html($customer_confirm_order->grandTotal); ?></td></tr>
+                <tr><th>Order Note</th><td><?php echo esc_html($customer_confirm_order->orderNote); ?></td></tr>
             </table>
         </div>
         <?php
     } else {
         // Display list of orders
-        $results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}customer_information");
+        $results = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}customer_info");
 
         ?>
         <div class="wrap">

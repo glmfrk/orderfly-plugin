@@ -9,7 +9,7 @@ function orderfly_create_shortcode() {
                 <div class="col-12 mx-auto">
                     <div class="order__box">
                         <a href="#" class="logo">
-                            <img src="<?php echo plugins_url('/assets/images/pran.png', __FILE__); ?>" alt="pran.png" />
+                            <img src="<?php echo plugins_url('../assets/images/pran.png', __FILE__); ?>" alt="pran.png" />
                         </a>
                         <h2 class="heading"><?php esc_html_e( 'আপনার অর্ডারকৃত পণ্য নির্ধারণ করুন', 'orderfly' ); ?></h2>
                         
@@ -148,5 +148,5 @@ function orderfly_create_shortcode() {
     return ob_get_clean();
 }
 
-add_shortcode('orderfly-page-order', 'orderfly_create_shortcode');
+add_shortcode('view-order-form-shortcode', 'orderfly_create_shortcode');
 ?>
