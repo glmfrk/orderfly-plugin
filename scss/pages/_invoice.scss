@@ -1,0 +1,198 @@
+/*
+* Google Fonts 
+*/
+
+// Work Sans 
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.invoice__container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid $invoiceSecondary;
+  background-color: #fefefe;
+
+  font-family: $font-work-sans;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+
+  .footer{
+    display: flex;
+    align-items: center;
+    margin-bottom: 100px;
+    p{
+      font-size: 20px;
+      font-weight: 600;
+      text-transform: uppercase;
+      flex: auto;
+      color: $invoicePrimaryDark;
+      span{
+        color: $invoicePrimaryDark;
+      }
+    }
+    :nth-child(1){
+      flex-basis: 60%;
+      color: $invoiceBlack;
+    }
+ 
+  }
+}
+.invoice__header {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  justify-content: space-between;
+  .column_part{
+    flex-basis: 30%;
+    strong {
+      color: $invoicePrimary;
+      font-size: 18px;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    h4{
+      color: $invoiceTitle;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+  :nth-child(2){
+    .company__logo {
+      display: flex;
+      justify-content: center;
+    }
+    img{
+      max-width: 100px;
+      width: 100%;
+      height: auto;
+  
+    }
+  }
+}
+.footer {
+  text-align: center;
+  padding: 10px 0;
+}
+.company__logo img {
+  width: 100px;
+}
+
+
+// Order Invoice Details 
+.invoice__details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 50px 0px 80px;
+
+  .invoice__card {
+    padding: 10px;
+  }
+
+  .card_header {
+    padding: 20px 0;
+    border-top: 2px solid $invoiceSecondary;
+    border-bottom: 2px solid $invoiceSecondary;
+    margin-bottom: 20px;
+    span {
+      text-transform: uppercase;
+      color: $invoicePrimary;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    h2{
+      font-size: 36px;
+      font-weight: 700;
+      color: $invoiceBlack;
+      text-transform: uppercase;
+    }
+  }
+  .card_body.address{
+    :nth-child(1){
+      color: $invoicePrimary;
+      text-transform: capitalize;
+      font-size: 18px;
+      font-weight: 600;
+    }
+    :nth-child(2){
+      color: $invoiceTitle;
+      text-transform: capitalize;
+      font-size: 18px;
+      font-weight: 600;
+    }
+  }
+}
+
+
+// Invoice Order Deatails 
+.order__details{
+  table.details{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    thead{
+      tr {
+        background: #e05f4b;
+      }
+      th {
+        padding: 15px;
+        color: #ffe7de;
+        font-size: 18px;
+        text-transform: uppercase;
+      }
+    }
+    tbody{
+      tr{
+        border-bottom: 2px solid $invoicePrimary;
+      }
+      td{
+        padding: 10px 0px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #1c1a1d;
+      }
+      :nth-child(2){
+        color: #4f6228;
+      }
+    }
+    tfoot{
+      tr{
+        border-bottom: 2px solid $invoicePrimary;
+        td{
+          padding: 10px 0;
+          text-align: center;
+          font-weight: 600;
+        }
+        :nth-child(1){
+          text-align: right;
+          padding-right: 50px;
+          font-weight: 400;
+        }
+        .total{
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+
+// Company Information 
+.company__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  .info__card {
+    font-size: 22px;
+    font-weight: 600;
+    span {
+      text-transform: uppercase;
+      display: inline-block;
+      margin-right: 5px;
+      color: #b6736c;
+    }
+  }
+}

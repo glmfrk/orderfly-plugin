@@ -1,6 +1,7 @@
 /*
 * basic tryprography css start here
 */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -224,16 +225,28 @@ form.coupn__form input#coupn_code {
 .product__table .product__table_row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 15px;
   padding: 5px 0px;
   margin: 10px 0px;
+}
+.product__table .product__table_row .item_left {
+  flex: 1;
+}
+.product__table .product__table_row .item_right {
+  flex-basis: 45%;
+  gap: 7%;
+}
+.product__table .product__table_row .item_right .close_icon {
+  background: transparent;
+  margin-left: auto;
+  font-size: 24px;
+  color: #8f8f8f;
 }
 
 .single_item {
   display: inline-flex;
   align-items: center;
   gap: 20px;
-  flex-basis: 60%;
 }
 .single_item .product_demo {
   width: 24px;
@@ -272,10 +285,6 @@ form.coupn__form input#coupn_code {
   width: 60px;
   display: inline-block;
   text-align: center;
-}
-
-.single_item.item_right {
-  flex: 1;
 }
 
 .shifting_table_wrapper {
@@ -361,6 +370,179 @@ form.coupn__form input#coupn_code {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 0px;
+}
+
+/*
+* Google Fonts 
+*/
+.invoice__container {
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #d4d4d4;
+  background-color: #fefefe;
+  font-family: "Work Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.8;
+}
+.invoice__container .footer {
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+}
+.invoice__container .footer p {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  flex: auto;
+  color: #b6736c;
+}
+.invoice__container .footer p span {
+  color: #b6736c;
+}
+.invoice__container .footer :nth-child(1) {
+  flex-basis: 60%;
+  color: #333333;
+}
+
+.invoice__header {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+  justify-content: space-between;
+}
+.invoice__header .column_part {
+  flex-basis: 30%;
+}
+.invoice__header .column_part strong {
+  color: #e3b9bc;
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.invoice__header .column_part h4 {
+  color: #7f7f7f;
+  font-size: 18px;
+  font-weight: 600;
+}
+.invoice__header :nth-child(2) .company__logo {
+  display: flex;
+  justify-content: center;
+}
+.invoice__header :nth-child(2) img {
+  max-width: 100px;
+  width: 100%;
+  height: auto;
+}
+
+.footer {
+  text-align: center;
+  padding: 10px 0;
+}
+
+.company__logo img {
+  width: 100px;
+}
+
+.invoice__details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 50px 0px 80px;
+}
+.invoice__details .invoice__card {
+  padding: 10px;
+}
+.invoice__details .card_header {
+  padding: 20px 0;
+  border-top: 2px solid #d4d4d4;
+  border-bottom: 2px solid #d4d4d4;
+  margin-bottom: 20px;
+}
+.invoice__details .card_header span {
+  text-transform: uppercase;
+  color: #e3b9bc;
+  font-size: 18px;
+  font-weight: 600;
+}
+.invoice__details .card_header h2 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333333;
+  text-transform: uppercase;
+}
+.invoice__details .card_body.address :nth-child(1) {
+  color: #e3b9bc;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
+}
+.invoice__details .card_body.address :nth-child(2) {
+  color: #7f7f7f;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.order__details table.details {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+.order__details table.details thead tr {
+  background: #e05f4b;
+}
+.order__details table.details thead th {
+  padding: 15px;
+  color: #ffe7de;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.order__details table.details tbody tr {
+  border-bottom: 2px solid #e3b9bc;
+}
+.order__details table.details tbody td {
+  padding: 10px 0px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1a1d;
+}
+.order__details table.details tbody :nth-child(2) {
+  color: #4f6228;
+}
+.order__details table.details tfoot tr {
+  border-bottom: 2px solid #e3b9bc;
+}
+.order__details table.details tfoot tr td {
+  padding: 10px 0;
+  text-align: center;
+  font-weight: 600;
+}
+.order__details table.details tfoot tr :nth-child(1) {
+  text-align: right;
+  padding-right: 50px;
+  font-weight: 400;
+}
+.order__details table.details tfoot tr .total {
+  font-weight: 600;
+}
+
+.company__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 50px;
+}
+.company__info .info__card {
+  font-size: 22px;
+  font-weight: 600;
+}
+.company__info .info__card span {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 5px;
+  color: #b6736c;
 }
 
 /*

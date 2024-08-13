@@ -15,6 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const plusButtons = document.querySelectorAll(".plus");
   const orderNote = document.querySelector('input[name="orderNote"]');
   const userForm = document.getElementById('userInfoForm');
+  const viewInvoice = document.getElementById('invoice-confirmation');
+  const downloadInvoice = document.getElementById('download-invoice');
+  const printInvoice = document.getElementById('print-invoice');
 
   const updateItemData = (itemRow, quantity) => {
     const itemId = itemRow.getAttribute("data-id");
@@ -141,14 +144,32 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('orderData').value = JSON.stringify(initialObj);
 
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', frontend_ajax.ajaxurl, true);
+    xhr.open('POST', orderfly_api.ajaxurl, true);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE) {
         if (xhr.status === 200) {
           const response = JSON.parse(xhr.responseText);
-          alert(response.success ? 'Order saved successfully.' : 'Failed to save order.');
+          if(response.success) {
+            alert('Order saved successfully.');
+            console.log('Order saved successfully.');
+
+            const pdf_url = response.data.pdf_url;
+            const order_id = response.data.order_id;
+
+            viewInvoice.style.display = 'block';
+            downloadInvoice.setAttribute('href', pdf_url);
+            downloadInvoice.setAttribute('download', 'invoice_' + order_id + '.pdf');
+
+            printInvoice.addEventListener('click', function () {
+              window.open(pdf_url, '_blank').print();
+            });
+            
+          } else {
+            alert('Failed to save order.');
+            console.log('Failed to save order.');
+          }
         } else {
           alert('An error occurred.');
         }
