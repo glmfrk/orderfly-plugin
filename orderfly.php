@@ -26,7 +26,7 @@ define('ORDERFLY_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('ORDERFLY_PLUGIN_URL', plugin_dir_url(__FILE__));
 
 // Include required files
-foreach (['orderfly-shortcode.php', 'orderfly-posttype.php', 'database-functions.php', 'ajax-handler.php', 'emailSend-functions.php', 'generatefpdf.php'] as $file) {
+foreach (['orderfly-shortcode.php', 'orderfly-posttype.php', 'database-functions.php', 'ajax-handler.php', 'email-functions.php', 'generatefpdf.php'] as $file) {
   require_once ORDERFLY_PLUGIN_PATH . 'includes/' . $file;
 }
 
@@ -62,10 +62,12 @@ function orderfly_enqueue_scripts() {
   // Enqueue bootstrap file
   wp_enqueue_script('orderfly-bootstrap', plugins_url('assets/js/bootstrap.min.js', __FILE__), array('jquery'), null, true);
 
+  // Enqueue jsPDF CDN
+  wp_enqueue_script('jspdf', 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js', array(), '2.4.0', true);
 
   // Enqueue and localize script for AJAX requests
-  wp_enqueue_script('orderfly-script', plugins_url('assets/js/orderfly.js', __FILE__), array('jquery', 'jspdf'), null, true);
-  wp_localize_script('orderfly-script', 'orderfly_api', array(
+  wp_enqueue_script('orderfly-main', plugins_url('assets/js/orderfly.js', __FILE__), array('jquery', 'jspdf'), null, true);
+  wp_localize_script('orderfly-main', 'orderfly_api', array(
     'ajaxurl' => admin_url('admin-ajax.php')
   ));
 }

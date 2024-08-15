@@ -137,11 +137,11 @@ function orderfly_create_shortcode() {
                                 <p class="mgs_info"><?php esc_html_e( 'উপরের বাটনে ক্লিক করলে আপনার অর্ডারটি সাথে সাথে কনফার্ম হয়ে যাবে !', 'orderfly' ); ?></p>
                             </form>
                         </div>
-                        <div id="invoice-confirmation" class="invoice-confirmation" style="display: none;">
+                        <div id="viewInvoice" class="invoice-confirmation" style="display: none;">
                             <p style="color: green;">Your order has been confirmed! You can download or print your invoice below:</p>
                             <div class="invoice-actions">
-                                <a id="download-invoice" href="#" download="invoice.pdf" class="btn btn-primary">Download PDF</a>
-                                <button id="print-invoice" class="btn btn-secondary">Print Invoice</button>
+                                <a id="downloadInvoice" href="#" download="invoice.pdf" class="btn btn-primary">Download PDF</a>
+                                <button id="printInvoice" class="btn btn-secondary">Print Invoice</button>
                             </div>
                         </div>
                     </div>

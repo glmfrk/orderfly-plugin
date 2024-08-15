@@ -1,16 +1,33 @@
 <?php
+// File: includes/ajax-handler.php
 
-// Save order data via AJAX
 add_action('wp_ajax_save_order_data', 'orderfly_save_order_data');
 add_action('wp_ajax_nopriv_save_order_data', 'orderfly_save_order_data');
 
+/**
+ * Handle order data saving via AJAX.
+ */
 function orderfly_save_order_data() {
     global $wpdb;
 
+    // Verify nonce for security
+    // if (!isset($_POST['orderNonce']) || !wp_verify_nonce($_POST['orderNonce'], 'orderfly_order_nonce')) {
+    //     wp_send_json_error(['error' => 'Nonce verification failed']);
+    //     return;
+    // }
+
+    // Decode order data
     $order_data = json_decode(stripslashes($_POST['orderData']), true);
 
-    // Insert into customer_info
-    $wpdb->insert(
+    // Check for JSON decoding errors
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        error_log('JSON decode error: ' . json_last_error_msg());
+        wp_send_json_error(['error' => 'Invalid JSON data']);
+        return;
+    }
+
+    // Insert customer information into the database
+    $customer_info = $wpdb->insert(
         $wpdb->prefix . 'customer_info',
         [
             'userName' => sanitize_text_field($order_data['shippingInfo']['userName']),
@@ -20,11 +37,17 @@ function orderfly_save_order_data() {
         ]
     );
 
+    if ($customer_info === false) {
+        error_log('Failed to insert customer info: ' . $wpdb->last_error);
+        wp_send_json_error(['error' => 'Failed to save customer information']);
+        return;
+    }
+
     $customer_id = $wpdb->insert_id;
 
-    // Insert into customer_order_info
+    // Insert each order item into the database
     foreach ($order_data['items'] as $item) {
-        $wpdb->insert(
+        $order_items = $wpdb->insert(
             $wpdb->prefix . 'customer_order_info',
             [
                 'order_id' => $customer_id,
@@ -33,10 +56,16 @@ function orderfly_save_order_data() {
                 'price' => floatval($item['price']),
             ]
         );
+
+        if ($order_items === false) {
+            error_log('Failed to insert order item: ' . $wpdb->last_error);
+            wp_send_json_error(['error' => 'Failed to save order items']);
+            return;
+        }
     }
 
-    // Insert into customer_confirm_order
-    $wpdb->insert(
+    // Insert order confirmation details into the database
+    $order_confirmation = $wpdb->insert(
         $wpdb->prefix . 'customer_confirm_order',
         [
             'order_id' => $customer_id,
@@ -47,12 +76,28 @@ function orderfly_save_order_data() {
         ]
     );
 
-
-    if (true) { // Replace with actual success condition
-        wp_send_json_success();
-    } else {
-        wp_send_json_error();
+    if ($order_confirmation === false) {
+        error_log('Failed to insert order confirmation: ' . $wpdb->last_error);
+        wp_send_json_error(['error' => 'Failed to confirm order']);
+        return;
     }
 
+    // Generate PDF Invoice
+    $pdf_url = orderfly_generate_invoice_pdf($customer_id);
+    if (!$pdf_url) {
+        error_log('PDF generation failed for customer ID: ' . $customer_id);
+        wp_send_json_error(['error' => 'Failed to generate PDF invoice']);
+        return;
+    }
+
+    // Send email with PDF attachment
+    // $email_sent = orderfly_send_invoice_email($order_data['shippingInfo']['userEmail'], $pdf_url, $customer_id);
+    // if (!$email_sent) {
+    //     error_log('Email sending failed for customer ID: ' . $customer_id);
+    //     wp_send_json_error(['error' => 'Failed to send email with PDF']);
+    //     return;
+    // }
+
+    wp_send_json_success(['pdf_url' => $pdf_url, 'order_id' => $customer_id]);
     wp_die();
 }
