@@ -10,12 +10,6 @@ add_action('wp_ajax_nopriv_save_order_data', 'orderfly_save_order_data');
 function orderfly_save_order_data() {
     global $wpdb;
 
-    // Verify nonce for security
-    // if (!isset($_POST['orderNonce']) || !wp_verify_nonce($_POST['orderNonce'], 'orderfly_order_nonce')) {
-    //     wp_send_json_error(['error' => 'Nonce verification failed']);
-    //     return;
-    // }
-
     // Decode order data
     $order_data = json_decode(stripslashes($_POST['orderData']), true);
 
@@ -91,12 +85,13 @@ function orderfly_save_order_data() {
     }
 
     // Send email with PDF attachment
-    // $email_sent = orderfly_send_invoice_email($order_data['shippingInfo']['userEmail'], $pdf_url, $customer_id);
-    // if (!$email_sent) {
-    //     error_log('Email sending failed for customer ID: ' . $customer_id);
-    //     wp_send_json_error(['error' => 'Failed to send email with PDF']);
-    //     return;
-    // }
+    $email_sent = orderfly_send_invoice_email($order_data['shippingInfo']['userEmail'], $pdf_url);
+    
+    if (!$email_sent) {
+        error_log('Email sending failed for customer ID: ' . $customer_id . ', PDF URL: ' . $pdf_url);
+        wp_send_json_error(['error' => 'Failed to send email with PDF']);
+        return;
+    }
 
     wp_send_json_success(['pdf_url' => $pdf_url, 'order_id' => $customer_id]);
     wp_die();

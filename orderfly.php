@@ -1,5 +1,4 @@
 <?php
-
 /*
  * Plugin Name:       Orderfly Plugin
  * Plugin URI:        https://github.com/glmfrk/orderfly-plugin

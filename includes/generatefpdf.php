@@ -25,30 +25,40 @@ function orderfly_generate_invoice_pdf($customer_id) {
         return false;
     }
 
+
     // Create a new PDF document
     $pdf = new FPDF();
     $pdf->AddPage();
 
-    // Set font
+    // Set font for title
     $pdf->SetFont('Arial', 'B', 16);
     $pdf->Cell(0, 10, 'Order Invoice', 0, 1, 'C');
 
-    // Supplier Details
-    $pdf->SetFont('Arial', '', 12);
-    $pdf->Ln(10);
-    $pdf->Cell(0, 6, 'Supplier: Pran Foods Limited', 0, 1);
-    $pdf->Cell(0, 6, 'Dhaka, Bangladesh', 0, 1);
-    $pdf->Cell(0, 6, 'Phone: +8801706428282', 0, 1);
-    $pdf->Cell(0, 6, 'BSTI License No: FR2050137055', 0, 1);
+    // Move below the logo
+    $pdf->Ln(20);
 
-    // Client Details
+    // Supplier and Client Details in two columns
+    $pdf->SetFont('Arial', '', 12);
+
+    // Define the width for each column
+    $column_width = 95;
+
+    // Supplier Details
+    $pdf->Cell($column_width, 6, 'Supplier: Pran Foods Limited', 0, 0);
+    $pdf->Cell($column_width, 6, 'Client: ' . $customer_info['userName'], 0, 1);
+
+    $pdf->Cell($column_width, 6, 'Dhaka, Bangladesh', 0, 0);
+    $pdf->Cell($column_width, 6, $customer_info['userAddress'], 0, 1);
+
+    $pdf->Cell($column_width, 6, 'Phone: +8801706428282', 0, 0);
+    $pdf->Cell($column_width, 6, 'Phone: ' . $customer_info['userPhone'], 0, 1);
+
+    $pdf->Cell($column_width, 6, 'BSTI License No: FR2050137055', 0, 1); // Only one line for Supplier, move to new line
+
+    // Move below the Supplier and Client Details
     $pdf->Ln(10);
-    $pdf->Cell(0, 6, 'Client: ' . $customer_info['userName'], 0, 1);
-    $pdf->Cell(0, 6, $customer_info['userAddress'], 0, 1);
-    $pdf->Cell(0, 6, 'Phone: ' . $customer_info['userPhone'], 0, 1);
 
     // Invoice Details
-    $pdf->Ln(10);
     $pdf->Cell(0, 6, 'Invoice: ' . $customer_id, 0, 1);
     $pdf->Cell(0, 6, 'Payment Method: ' . 'Cash On Delivery', 0, 1);
     $pdf->Cell(0, 6, 'Order Number: #' . $customer_id, 0, 1);
@@ -68,11 +78,11 @@ function orderfly_generate_invoice_pdf($customer_id) {
 
     $pdf->SetFont('Arial', '', 12);
     foreach ($order_items as $item) {
-        $pdf->Cell(40, 7, $item['productName'], 1);
+        $pdf->Cell(40, 7, $item['title'], 1);
         $pdf->Cell(60, 7, $item['description'], 1);
         $pdf->Cell(20, 7, $item['quantity'], 1, 0, 'C');
         $pdf->Cell(30, 7, $item['price'], 1, 0, 'R');
-        $pdf->Cell(30, 7, $item['quantity'] * $item['price'], 1, 0, 'R');
+        $pdf->Cell(30, 7, number_format($item['quantity'] * $item['price'], 2), 1, 0, 'R');
         $pdf->Ln();
     }
 
