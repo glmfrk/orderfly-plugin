@@ -45,10 +45,10 @@ function orderfly_create_shortcode() {
                                         <div class="pd_pricing">
                                             Tk <span><?php echo esc_html($product_price); ?></span>
                                         </div>
-                                        <div class="quantity">
-                                            <input type="button" value="-" class="minus" />
+                                        <div class="button_groups">
+                                            <button type="button" class="button minus">-</button>
                                             <input type="number" value="0" min="0" class="input-box" />
-                                            <input type="button" value="+" class="plus" />
+                                            <button type="button" class="button plus">-</button>
                                         </div>
                                     </div>
                                 </div>
