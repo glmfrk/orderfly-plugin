@@ -72,4 +72,28 @@ function orderfly_enqueue_scripts() {
 }
 add_action('wp_enqueue_scripts', 'orderfly_enqueue_scripts');
 
+// Add "Settings" link in plugins list
+add_filter('plugin_action_links_' . plugin_basename(__FILE__), 'orderfly_plugin_action_links');
+function orderfly_plugin_action_links($links) {
+    $action_links = [
+        'settings' => '<a href="' . admin_url('edit.php?post_type=order_fly&page=orderfly_all_orders') . '">' . esc_html__('Settings', 'orderfly') . '</a>',
+    ];
+    return array_merge($action_links, $links);
+}
 
+
+add_filter('plugin_row_meta', 'orderfly_plugin_support_link', 10, 2);
+/** 
+ * Add a support link to the plugin details. 
+ */
+function orderfly_plugin_support_link($links, $file) {
+  if ($file === plugin_basename(__FILE__)) {  
+
+    $support_link = '<a href="https://www.facebook.com/gulamfrk/" target="_blank" style="color: #0073aa;">' . __('Support', 'orderfly') . '</a>';  
+
+    $links[] = $support_link;        
+
+
+  }  
+  return $links;  
+}
