@@ -95,6 +95,16 @@ function orderfly_add_submenu() {
         'orderfly_all_orders',          // Menu slug
         'orderfly_display_orders'       // Callback function
     );
+
+    // New submenu for Shortcode Display
+    add_submenu_page(
+        'edit.php?post_type=order_fly', // Parent slug
+        'Order Form Shortcode',         // Page title
+        'Order Shortcode',              // Menu title
+        'manage_options',               // Capability
+        'orderfly_shortcode_page',      // Menu slug
+        'orderfly_shortcode_display'    // Callback
+    );
 }
 
 function orderfly_display_orders() {
@@ -182,3 +192,15 @@ function orderfly_display_orders() {
         <?php
     }
 }
+
+
+// Callback function for the shortcode submenu
+function orderfly_shortcode_display() { ?>
+    <div class="wrap">
+        <h1>Order Form Shortcode</h1>
+        <p>Use the shortcode below to display the order form on any page or post:</p>
+        <code>[view-order-form-shortcode]</code>
+
+        <p>You can copy and paste it into your desired page or post editor.</p>
+    </div>
+<?php }
